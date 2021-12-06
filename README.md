@@ -1,7 +1,7 @@
 # tech-blog
 ## Table of Contents
 - Description
-- Walkthrough video
+- link to Heroku deployed app
 - Installation
 - Usage
 - Contributors
@@ -10,8 +10,8 @@
 ## Description
 This project is designed to practice implementing mvc structure to an application. I was tasked with creating a tech blog that stored user login as well as posts and commments made. The user is also able to update the comments and posts they have made and the database reflects those inputs. It was a challenging yet fun task 
 
-## Walkthrough Video
-to see walkthrough click link <a href="">here</a>
+## link to Heroku deployed app
+Link to heroku live app <a href="https://git.heroku.com/thawing-mesa-23498.git">here</a>
 
 ## Installation
 This project requires the following dependencies needed to install:

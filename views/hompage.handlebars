@@ -1,20 +1,16 @@
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>My Post</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-  </head>
-  <body>
-    <h1>{{User}}</h1>
+
+    <h1>{{User.username}}</h1>
     <nav>
       <button><a href=""> Create Post</a></button>
       <button><a href=""> My Posts</a></button>
       <button><a href=""> My Comments</a></button>
     </nav>
-    <ul>
+    <ul>{{#each post as |post|}}
+      <li> <a href="/post/{{post.id}}"></a>
+        <p>Created by {{post.user.username}}</p>
+      </li>
+      {{/each}}
+    </ul>
       
   </body>
 </html>
