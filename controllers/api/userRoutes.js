@@ -1,6 +1,6 @@
 const { User, Comment, Post } = require("../../models/");
-const app = require("express").Router();
-app.post("/login", async (req, res) => {
+const Router = require("express").Router();
+Router.post("/login", async (req, res) => {
   try {
     const getUser = await User.findOne({
       where: { username: req.body.username },
@@ -25,7 +25,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/:id", async (req, res) => {
+Router.get("/:id", async (req, res) => {
   try {
     const getUser = await User.findByPk(req.params.id);
     const thisUser = getUser.get({ plain: true });
@@ -41,4 +41,4 @@ app.get("/:id", async (req, res) => {
     res.render("homepage", User);
   });
 });
-module.exports = app;
+module.exports = Router;
