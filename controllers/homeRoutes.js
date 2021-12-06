@@ -7,7 +7,10 @@ app.get("/", async (req, res) => {
       model: "Post",
     },
   });
+res.render('posts', {Post} )
 });
 app.get('/:id', async (req,res) => {
-    const postData = await Post.findByPk(req.params.id)
+  const postData = await Post.findByPk(req.params.id);
+  res.render('singlePost', {Post})
 })
+module.exports = app;

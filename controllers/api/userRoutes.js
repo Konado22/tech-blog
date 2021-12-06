@@ -1,7 +1,5 @@
-const {User} = require('../../models/User')
-const sequelize = require('sequelize')
-const { Router } = require('express')
-const app = require('express').Router();
+const {User, Comment, Post} = require('../../models/')
+const Router = require('express').Router();
 app.get('/', async (req,res) => {
     try{
     const getUser = await User.findByPk(req.params.id);
@@ -10,4 +8,10 @@ app.get('/', async (req,res) => {
 } catch (err){
     res.status(400).json(err)
 }
+})
+app.post('/', async (req,res) => {
+    const createUser= await User.create({
+        user: req.body.user,
+        password:req.body.password
+    })
 })
