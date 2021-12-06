@@ -1,3 +1,6 @@
 const loginAuth = (req,res,next)=> {
-    if
+    if(!req.session.logged_in){
+        res.redirect('/login')
+    }
 }
+module.exports = loginAuth;
