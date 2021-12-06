@@ -9,9 +9,3 @@ app.get('/', async (req,res) => {
     res.status(400).json(err)
 }
 })
-app.post('/', async (req,res) => {
-    const createUser= await User.create({
-        user: req.body.user,
-        password:req.body.password
-    })
-})
