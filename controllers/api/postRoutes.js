@@ -8,6 +8,7 @@ Router.post("/", loginAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
+    res.render('homepage')
   } catch (err) {
     console.log(err);
   }
@@ -17,19 +18,19 @@ Router.post("/"),
   async (req, res) => {
     try {
       const userData = await User.create(req.body);
-      res.render("");
+      res.redirect("/api/user/login");
     } catch (err) {
       console.log(err);
     }
   };
-Router.post("/", loginAuth, async (req, res) => {
+Router.post("/post/:id", loginAuth, async (req, res) => {
   try {
     const commentData = await Comment.create({
       user_id: req.body.user_id,
       comment_body: req.body.comment_body,
       post_id: req.body.post_id,
     });
-    res.render("");
+    res.redirect("/post/:id");
   } catch (err) {
     console.log(err);
   }
