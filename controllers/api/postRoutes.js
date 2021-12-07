@@ -5,8 +5,8 @@ const loginAuth = require("../../utils/login");
 Router.post("/", loginAuth, async (req, res) => {
   try {
     const postData = await Post.create({
-     ...req.body,
-     user_id: req.session.user_id
+      ...req.body,
+      user_id: req.session.user_id,
     });
   } catch (err) {
     console.log(err);

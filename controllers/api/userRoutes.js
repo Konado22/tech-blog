@@ -1,9 +1,9 @@
 const { User, Comment, Post } = require("../../models/");
 const Router = require("express").Router();
 const loginAuth = require("../../utils/login");
-Router.post("/login", loginAuth, (req, res) => {
+Router.post("/login", loginAuth, async (req, res) => {
   try {
-    const pass = await userData.checkPassword(req.body.password);
+    
     const userData = await User.findOne({
       where: {
         email: req.body.email,
@@ -13,8 +13,10 @@ Router.post("/login", loginAuth, (req, res) => {
       console.log("please enter valid username");
       return;
     }
+    const pass = await userData.checkPassword(req.body.password);
     if (!pass) {
       res.json({ message: "wrong password try again" });
+      return
     }
     res.session.save(() => {
       req.session.user_id = userData.id;
@@ -23,8 +25,9 @@ Router.post("/login", loginAuth, (req, res) => {
   } catch (err) {
     console.log(err);
   }
+
 });
-router.post("/logout", (req, res) => {
+Router.post("/logout", async (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(200).json("you are now logged out").end();
