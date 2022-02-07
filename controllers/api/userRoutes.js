@@ -21,6 +21,7 @@ Router.post("/login", loginAuth, async (req, res) => {
     res.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.username = userData.username;
     });
   } catch (err) {
     console.log(err);

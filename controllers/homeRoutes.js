@@ -1,5 +1,4 @@
 const { User, Comment, Post } = require("../models");
-const sequelize = require("sequelize");
 const Router = require("express").Router();
 const loginAuth = require("../utils/login");
 Router.get("/", async (req, res) => {
@@ -7,7 +6,7 @@ Router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: [{
-        model: "user",
+        model: User,
         attributes: ["username"],
       }],
     })
@@ -42,11 +41,11 @@ Router.get("/post/:id", loginAuth, async (req, res) => {
     console.log(err);
   }
 });
-// Router.get("/api/user/login", async (req, res) => {
-//   if (req.session.logged_in) {
-//     res.render("homepage");
-//   } else {
-//     res.render("login");
-//   }
-// });
+Router.get("/api/user/login", async (req, res) => {
+  if (req.session.logged_in) {
+    res.render("homepage");
+  } else {
+    res.render("login");
+  }
+});
 module.exports = Router;
