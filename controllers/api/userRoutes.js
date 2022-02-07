@@ -3,7 +3,15 @@ const Router = require("express").Router();
 const loginAuth = require("../../utils/login");
 //create user
 // update user
-// delete user
+// logout
+Router.post("/logout", async (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(200).json("you are now logged out").end();
+    });
+  }
+});
+
 //login
 Router.post("/login", loginAuth, async (req, res) => {
   try {
@@ -32,11 +40,5 @@ Router.post("/login", loginAuth, async (req, res) => {
   }
 
 });
-Router.post("/logout", async (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(200).json("you are now logged out").end();
-    });
-  }
-});
+
 module.exports = Router;

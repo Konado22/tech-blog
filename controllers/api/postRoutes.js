@@ -17,12 +17,12 @@ Router.post("/", loginAuth, async (req, res) => {
     console.log(err);
   }
 });
-Router.post("/post/:id", loginAuth, async (req, res) => {
+Router.post("/:id", loginAuth, async (req, res) => {
   try {
     const commentData = await Comment.create({
       ...req.body,
     });
-    res.redirect("/post/:id");
+    res.redirect("/:id");
   } catch (err) {
     console.log(err);
   }

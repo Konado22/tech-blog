@@ -1,9 +1,8 @@
 
     <h1> Hi: {{User.username}}</h1>
     <nav>
-      <button><a href=""> Create Post</a></button>
-      <button><a href=""> My Posts</a></button>
-      <button><a href=""> My Comments</a></button>
+      <button><a href="/api/post/"> Create Post</a></button>
+      <button><a href="/api/post/:id"> My Posts</a></button>
     </nav>
     <ul>{{#each post as |Post|}}
       <li> <a href="/post/{{post.id}}"></a>

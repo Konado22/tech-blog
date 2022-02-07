@@ -1,6 +1,15 @@
+const res = require("express/lib/response");
 const { User, Comment, Post } = require("../models");
 const Router = require("express").Router();
 const loginAuth = require("../utils/login");
+//homepage redirect
+// Router.get('/', async () => {
+//   try{  res.render('login')
+// }
+//   catch (err) {
+//   res.status(400).json(err)
+// }
+// })
 //user homepage and render
 Router.get("/:id",  async (req, res) => {
   console.log("homeroute")
@@ -23,8 +32,11 @@ Router.get("/:id",  async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+}
+else {
+  res.redirect('/api/user/login')
 }});
-//find post by id
+//find post by id already done?
 // Router.get("/post/:id", loginAuth, async (req, res) => {
 //   try {
 //     const postData = await Post.findByPk(req.params.id, {
