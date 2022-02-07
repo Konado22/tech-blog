@@ -1,6 +1,10 @@
 const { User, Comment, Post } = require("../../models/");
 const Router = require("express").Router();
 const loginAuth = require("../../utils/login");
+//create user
+// update user
+// delete user
+//login
 Router.post("/login", loginAuth, async (req, res) => {
   try {
     

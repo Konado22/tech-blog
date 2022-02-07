@@ -1,6 +1,10 @@
 const Router = require("express").Router();
 const { Post, User, Comment } = require("../../models");
 const loginAuth = require("../../utils/login");
+//post create
+//post update
+//post delete
+//find post by id
 
 Router.post("/", loginAuth, async (req, res) => {
   try {
@@ -8,31 +12,21 @@ Router.post("/", loginAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
-    res.render('homepage')
+    res.render("homepage");
   } catch (err) {
     console.log(err);
   }
 });
-Router.post("/"),
-  loginAuth,
-  async (req, res) => {
-    try {
-      const userData = await User.create(req.body);
-      res.redirect("/api/user/login");
-    } catch (err) {
-      console.log(err);
-    }
-  };
 Router.post("/post/:id", loginAuth, async (req, res) => {
   try {
     const commentData = await Comment.create({
-      user_id: req.body.user_id,
-      comment_body: req.body.comment_body,
-      post_id: req.body.post_id,
+      ...req.body,
     });
     res.redirect("/post/:id");
   } catch (err) {
     console.log(err);
   }
 });
+// Router.put(update comment by id) 
+//Router.put(update post by id)
 module.exports = Router;
